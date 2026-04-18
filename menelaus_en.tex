@@ -1,0 +1,87 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\begin{theorem}[Menelaus's Theorem]
+\label{thm:menelaus}
+Let $\triangle ABC$ be a triangle, and let a line $l$ meet the lines $BC$,
+$CA$, and $AB$ (or their extensions) at points $D$, $E$, and $F$,
+respectively, with $D,E,F$ distinct from $A,B,C$. Using signed lengths,
+Menelaus's theorem states that
+\[
+\frac{\overline{AF}}{\overline{FB}}\cdot
+\frac{\overline{BD}}{\overline{DC}}\cdot
+\frac{\overline{CE}}{\overline{EA}}
+=
+-1.
+\]
+If one takes absolute values instead, then the corresponding unsigned product
+is $1$.
+\end{theorem}
+
+\begin{proof}
+An affine transformation preserves collinearity and preserves ratios of
+directed segments on any fixed line. Therefore it is enough to prove the
+theorem after sending
+\[
+A=(0,0),\qquad B=(1,0),\qquad C=(0,1).
+\]
+In these coordinates, the three sideline intersections can be written as
+\[
+F=(f,0),\qquad E=(0,e),\qquad D=(d,1-d)
+\]
+for some real numbers $f,e,d$.
+
+Since $D,E,F$ are collinear, their coordinate matrix has determinant zero:
+\[
+\det
+\begin{pmatrix}
+f & 0 & 1 \\
+0 & e & 1 \\
+d & 1-d & 1
+\end{pmatrix}
+=0.
+\]
+Expanding the determinant gives
+\[
+-de+df+ef-f=0,
+\]
+or equivalently
+\[
+d(e-f)=f(1-e).
+\]
+Hence
+\[
+d=\frac{f(e-1)}{e-f},
+\qquad
+1-d=\frac{e(1-f)}{e-f}.
+\]
+
+Now compute the directed ratios along the three sidelines:
+\[
+\frac{\overline{AF}}{\overline{FB}}=\frac{f}{1-f},
+\qquad
+\frac{\overline{BD}}{\overline{DC}}=\frac{1-d}{d},
+\qquad
+\frac{\overline{CE}}{\overline{EA}}=\frac{1-e}{e}.
+\]
+Therefore
+\[
+\frac{\overline{AF}}{\overline{FB}}\cdot
+\frac{\overline{BD}}{\overline{DC}}\cdot
+\frac{\overline{CE}}{\overline{EA}}
+=
+\frac{f}{1-f}\cdot
+\frac{e(1-f)}{f(e-1)}\cdot
+\frac{1-e}{e}
+=
+-1.
+\]
+This proves Menelaus's theorem. Taking absolute values immediately gives the
+unsigned version with product $1$.
+\end{proof}
+
+\end{document}

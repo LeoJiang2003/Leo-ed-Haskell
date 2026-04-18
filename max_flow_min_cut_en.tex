@@ -1,0 +1,77 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\begin{theorem}[Max-Flow Min-Cut Theorem]
+\label{thm:maxflowmincut}
+Let $G=(V,E)$ be a directed network with a nonnegative capacity function
+$u:E\to\mathbb{R}_{\ge 0}$, together with a source $s$ and a sink $t$. The
+value of an $s$--$t$ flow is the total amount of flow leaving $s$. An
+$s$--$t$ cut is a subset $S\subseteq V$ such that $s\in S$ and $t\notin S$,
+and its capacity is
+\[
+\operatorname{cap}(S)=\sum_{(i,j)\in E,\ i\in S,\ j\notin S} u(i,j).
+\]
+Then
+\[
+\max\{\text{value of a feasible } s\text{--}t \text{ flow}\}
+=
+\min\{\operatorname{cap}(S): s\in S,\ t\notin S\}.
+\]
+In other words, the maximum value of a feasible flow equals the minimum
+capacity of an $s$--$t$ cut.
+\end{theorem}
+
+\begin{proof}
+Let $x$ be any feasible $s$--$t$ flow, and let its value be $z$. For any
+$s$--$t$ cut $S$, sum the flow-conservation equations over all vertices in
+$S\setminus\{s\}$. All contributions on edges with both endpoints in $S$
+cancel, and we obtain the cut identity
+\[
+z
+=
+\sum_{(i,j)\in E,\ i\in S,\ j\notin S} x_{ij}
+-
+\sum_{(j,i)\in E,\ j\notin S,\ i\in S} x_{ji}.
+\]
+Since $0\le x_{ij}\le u(i,j)$ on every edge, it follows that
+\[
+z\le
+\sum_{(i,j)\in E,\ i\in S,\ j\notin S} u(i,j)
+=
+\operatorname{cap}(S).
+\]
+Thus every feasible flow has value at most the capacity of every $s$--$t$ cut.
+
+For the reverse inequality, run the augmenting-path algorithm until it stops,
+and let $x^*$ be the resulting flow. In the residual network of $x^*$, let
+$S$ be the set of vertices reachable from $s$. Because there is no augmenting
+path, $t\notin S$, so $S$ is an $s$--$t$ cut.
+
+Now consider an edge $(i,j)$ with $i\in S$ and $j\notin S$. If it were not
+saturated, then the residual network would contain the forward edge
+$i\to j$, so $j$ would also be reachable from $s$, a contradiction. Hence
+$x^*_{ij}=u(i,j)$ for every such edge.
+
+Next consider an edge $(j,i)$ with $j\notin S$ and $i\in S$. If
+$x^*_{ji}>0$, then the residual network would contain the reverse edge
+$i\to j$, again making $j$ reachable from $s$, a contradiction. Hence
+$x^*_{ji}=0$ for every edge entering $S$ from $V\setminus S$.
+
+Substituting these two facts into the cut identity gives
+\[
+\operatorname{value}(x^*)
+=
+\sum_{(i,j)\in E,\ i\in S,\ j\notin S} u(i,j)
+=
+\operatorname{cap}(S).
+\]
+So there exists a feasible flow whose value equals the capacity of some
+$s$--$t$ cut. Combined with the first part, this proves that the maximum flow
+value equals the minimum cut capacity.
+\end{proof}
+
+\end{document}
