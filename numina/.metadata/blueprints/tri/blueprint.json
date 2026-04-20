@@ -3,5 +3,11 @@
   "branch": "numina/tri",
   "source_type": "latex",
   "notes": "",
-  "entries": []
+  "entries": [
+    {
+      "label": "thm:pick",
+      "kind": "theorem",
+      "title": "Pick's Theorem"
+    }
+  ]
 }

@@ -1,0 +1,10 @@
+{
+  "label": "thm:pick",
+  "kind": "theorem",
+  "title": "Pick's Theorem",
+  "leanDeclaration": "",
+  "leanFile": "",
+  "uses": [],
+  "statement": "Let $P$ be a simple polygon in the plane whose vertices all have integer\ncoordinates. Let $i$ be the number of lattice points in the interior of $P$,\nand let $b$ be the number of lattice points on the boundary of $P$ (including\nthe vertices). Then the area $A$ of $P$ satisfies\n\\[\nA=i+\\frac{b}{2}-1.\n\\]",
+  "proof": "Add noncrossing diagonals until $P$ is triangulated, using every lattice\npoint of $P$ as a vertex of the triangulation. Then each triangle in the\ntriangulation is a primitive lattice triangle, meaning that it has no lattice\npoints other than its three vertices on its boundary or in its interior. By\nthe standard lattice-triangle lemma, every primitive lattice triangle has area\n$\\tfrac12$.\n\nLet $T$ be the number of triangles in the triangulation. Since area is\nadditive,\n\\[\nA=\\frac{T}{2}.\n\\]\n\nNow view the triangulation as a planar graph. Let $V$, $E$, and $F$ be the\nnumbers of vertices, edges, and faces. Because every lattice point of $P$ is a\nvertex, we have\n\\[\nV=i+b.\n\\]\nThe faces are the $T$ bounded triangles together with the unbounded exterior\nface, so\n\\[\nF=T+1.\n\\]\nEuler's formula gives\n\\[\nV-E+F=2.\n\\]\n\nTo count edges, let $E_{\\mathrm{int}}$ be the number of interior edges. Then\n\\[\nE=E_{\\mathrm{int}}+b,\n\\]\nbecause the polygon boundary contributes exactly $b$ edges, one between each\npair of consecutive boundary lattice points. Counting sides of triangles gives\n\\[\n3T=2E_{\\mathrm{int}}+b=2E-b.\n\\]\nHence\n\\[\nE=\\frac{3T+b}{2}.\n\\]\nSubstituting this into Euler's formula yields\n\\[\n(i+b)-\\frac{3T+b}{2}+(T+1)=2,\n\\]\nso\n\\[\nT=2i+b-2.\n\\]\nTherefore\n\\[\nA=\\frac{T}{2}=\\frac{2i+b-2}{2}=i+\\frac{b}{2}-1.\n\\]\nThis is Pick's theorem."
+}
