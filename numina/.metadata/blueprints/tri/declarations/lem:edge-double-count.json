@@ -9,5 +9,6 @@
   ],
   "statement": "For a lattice triangulation $\\mathcal{T}$ of $P$ with $T$ triangles and plane\ngraph $G(\\mathcal{T})$ having $E$ edges,\n\\[\n3T \\;=\\; 2E - b(P),\n\\qquad\\text{equivalently}\\qquad\nE \\;=\\; \\frac{3T + b(P)}{2}.\n\\]\nThe proof counts triangle sides in two ways: each interior edge lies on two\ntriangles, each boundary edge on one.",
   "proof": null,
-  "leanDeclaration": "Pick.edge_double_count"
+  "leanDeclaration": "Pick.edge_double_count",
+  "leanFile": "Tri/Pick.lean"
 }

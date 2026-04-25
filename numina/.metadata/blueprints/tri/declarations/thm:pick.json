@@ -3,7 +3,7 @@
   "kind": "theorem",
   "title": "Pick's Theorem",
   "leanDeclaration": "Pick.pick",
-  "leanFile": "",
+  "leanFile": "Tri/Pick.lean",
   "uses": [
     "def:simple-polygon",
     "def:area",

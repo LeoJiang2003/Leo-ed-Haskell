@@ -7,5 +7,6 @@
   ],
   "statement": "For the plane graph $G(\\mathcal{T})$ of a lattice triangulation of a simple\npolygon,\n\\[\nV - E + F \\;=\\; 2.\n\\]",
   "proof": null,
-  "leanDeclaration": "Pick.euler_formula"
+  "leanDeclaration": "Pick.euler_formula",
+  "leanFile": "Tri/Pick.lean"
 }

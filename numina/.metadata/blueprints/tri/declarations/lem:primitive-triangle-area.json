@@ -8,5 +8,6 @@
   ],
   "statement": "If $\\Delta$ is a primitive lattice triangle, then its Euclidean area is\n$\\tfrac12$.",
   "proof": null,
-  "leanDeclaration": "Pick.primitive_lattice_triangle_area"
+  "leanDeclaration": "Pick.primitive_lattice_triangle_area",
+  "leanFile": "Tri/Pick.lean"
 }
