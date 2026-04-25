@@ -45,8 +45,18 @@ structure SimplePolygon where
 
 namespace SimplePolygon
 
-/-- The Euclidean area of the closed region enclosed by `P`. -/
-noncomputable def area (P : SimplePolygon) : ℝ := sorry
+/-- The Euclidean area of the closed region enclosed by `P`, given by the
+shoelace formula over consecutive cyclic vertex pairs. The integer signed
+sum `∑ (xᵢ * yᵢ₊₁ - xᵢ₊₁ * yᵢ)` is taken over indices `i = 0, …, n-1`
+with indices read modulo `n = vertices.length`; we then take its absolute
+value, cast to `ℝ`, and divide by 2. -/
+noncomputable def area (P : SimplePolygon) : ℝ :=
+  let n := P.vertices.length
+  let v : ℕ → LatticePoint := fun i => P.vertices.getD (i % n) (0, 0)
+  let s : ℤ :=
+    (Finset.range n).sum fun i =>
+      (v i).1 * (v (i + 1)).2 - (v (i + 1)).1 * (v i).2
+  ((|s| : ℤ) : ℝ) / 2
 
 /-- The number of lattice points strictly inside `P`. -/
 noncomputable def interiorLatticePoints (P : SimplePolygon) : ℕ := sorry
@@ -58,14 +68,16 @@ noncomputable def boundaryLatticePoints (P : SimplePolygon) : ℕ := sorry
 end SimplePolygon
 
 /-- A lattice triangle is the convex hull of three non-collinear lattice
-points. The non-collinearity predicate is left abstract for now. -/
+points. Non-collinearity is encoded as the non-vanishing of the integer
+signed-area expression on the three vertices. -/
 structure LatticeTriangle where
   v₁ : LatticePoint
   v₂ : LatticePoint
   v₃ : LatticePoint
-  /-- Non-collinearity of the three vertices. Refined later. -/
-  nonCollinear : Prop
-  nonCollinear_holds : nonCollinear
+  /-- Non-collinearity of the three vertices: the signed-area expression
+  does not vanish over `ℤ`. -/
+  nonCollinear :
+    (v₂.1 - v₁.1) * (v₃.2 - v₁.2) - (v₃.1 - v₁.1) * (v₂.2 - v₁.2) ≠ 0
 
 namespace LatticeTriangle
 
@@ -73,8 +85,12 @@ namespace LatticeTriangle
 interior or on its boundary except the three vertices. -/
 def IsPrimitive (T : LatticeTriangle) : Prop := sorry
 
-/-- The Euclidean area of a lattice triangle. -/
-noncomputable def area (T : LatticeTriangle) : ℝ := sorry
+/-- The Euclidean area of a lattice triangle, given by the shoelace
+formula on the three integer vertices: half the absolute value of the
+signed-area expression, cast to `ℝ`. -/
+def area (T : LatticeTriangle) : ℝ :=
+  ((|(T.v₂.1 - T.v₁.1) * (T.v₃.2 - T.v₁.2)
+      - (T.v₃.1 - T.v₁.1) * (T.v₂.2 - T.v₁.2)| : ℤ) : ℝ) / 2
 
 end LatticeTriangle
 
