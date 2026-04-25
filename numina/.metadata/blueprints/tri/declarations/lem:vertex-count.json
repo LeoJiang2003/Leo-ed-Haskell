@@ -1,0 +1,14 @@
+{
+  "label": "lem:vertex-count",
+  "kind": "lemma",
+  "title": "Vertex count",
+  "uses": [
+    "def:plane-graph",
+    "def:interior-points",
+    "def:boundary-points",
+    "lem:exists-primitive-triangulation"
+  ],
+  "statement": "For a full lattice triangulation $\\mathcal{T}$ of $P$ with plane graph\n$G(\\mathcal{T})$,\n\\[\nV \\;=\\; i(P) + b(P),\n\\]\nwhere $V$ is the number of vertices of $G(\\mathcal{T})$.",
+  "proof": null,
+  "leanDeclaration": "Pick.vertex_count"
+}

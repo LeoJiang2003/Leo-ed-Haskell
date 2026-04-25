@@ -1,0 +1,13 @@
+{
+  "label": "lem:boundary-edge-count",
+  "kind": "lemma",
+  "title": "Boundary contributes $b$ edges",
+  "uses": [
+    "def:plane-graph",
+    "def:boundary-points",
+    "lem:exists-primitive-triangulation"
+  ],
+  "statement": "For a full lattice triangulation $\\mathcal{T}$ of $P$, the boundary of $P$\ncontributes exactly $b(P)$ edges to the plane graph $G(\\mathcal{T})$, one\nbetween each pair of consecutive boundary lattice points.",
+  "proof": null,
+  "leanDeclaration": "Pick.boundary_edge_count"
+}

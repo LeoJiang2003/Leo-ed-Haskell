@@ -1,0 +1,9 @@
+{
+  "label": "def:lattice-point",
+  "kind": "definition",
+  "title": "Lattice point",
+  "uses": [],
+  "statement": "A \\emph{lattice point} in the plane is a point of $\\mathbb{Z}^2 \\subset\n\\mathbb{R}^2$.",
+  "proof": null,
+  "leanDeclaration": "Pick.LatticePoint"
+}

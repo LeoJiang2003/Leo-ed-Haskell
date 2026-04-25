@@ -1,0 +1,12 @@
+{
+  "label": "def:triangulation",
+  "kind": "definition",
+  "title": "Triangulation of a polygon",
+  "uses": [
+    "def:simple-polygon",
+    "def:lattice-triangle"
+  ],
+  "statement": "A \\emph{lattice triangulation} of a simple lattice polygon $P$ is a finite\ncollection $\\mathcal{T} = \\{\\Delta_1, \\dots, \\Delta_T\\}$ of lattice triangles\nsuch that:\n\\begin{enumerate}\n\\item their union equals the closed region $P$;\n\\item their interiors are pairwise disjoint;\n\\item the intersection of any two distinct triangles is either empty, a\ncommon vertex, or a common edge (the \\emph{edge-to-edge} condition).\n\\end{enumerate}\nThe triangulation is called \\emph{primitive} if every $\\Delta_j$ is a\nprimitive lattice triangle, and \\emph{full} if every lattice point of $P$\nappears as a vertex of some $\\Delta_j$.",
+  "proof": null,
+  "leanDeclaration": "Pick.Triangulation"
+}

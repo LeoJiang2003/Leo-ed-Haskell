@@ -1,0 +1,12 @@
+{
+  "label": "lem:area-additive",
+  "kind": "lemma",
+  "title": "Area additivity over a triangulation",
+  "uses": [
+    "def:triangulation",
+    "def:area"
+  ],
+  "statement": "If $\\mathcal{T} = \\{\\Delta_1, \\dots, \\Delta_T\\}$ is any lattice triangulation\nof $P$, then\n\\[\nA(P) \\;=\\; \\sum_{j=1}^{T} A(\\Delta_j).\n\\]\nIn particular, if $\\mathcal{T}$ is primitive, then $A(P) = T/2$.",
+  "proof": null,
+  "leanDeclaration": "Pick.area_eq_sum_triangle_areas"
+}

@@ -1,0 +1,12 @@
+{
+  "label": "lem:face-count",
+  "kind": "lemma",
+  "title": "Face count",
+  "uses": [
+    "def:plane-graph",
+    "def:triangulation"
+  ],
+  "statement": "For a lattice triangulation $\\mathcal{T}$ of $P$ with $T$ triangles,\n\\[\nF \\;=\\; T + 1,\n\\]\nwhere $F$ is the number of faces of the plane graph $G(\\mathcal{T})$\n(counting the unbounded exterior face).",
+  "proof": null,
+  "leanDeclaration": "Pick.face_count"
+}

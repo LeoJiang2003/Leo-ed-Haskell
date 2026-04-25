@@ -1,0 +1,11 @@
+{
+  "label": "def:boundary-points",
+  "kind": "definition",
+  "title": "Boundary lattice points",
+  "uses": [
+    "def:simple-polygon"
+  ],
+  "statement": "For a simple lattice polygon $P$, write $b(P)$ for the number of lattice\npoints lying on the boundary curve of $P$ (vertices included).",
+  "proof": null,
+  "leanDeclaration": "Pick.SimplePolygon.boundaryLatticePoints"
+}

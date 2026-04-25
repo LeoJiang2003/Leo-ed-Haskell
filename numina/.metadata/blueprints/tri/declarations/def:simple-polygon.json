@@ -1,0 +1,11 @@
+{
+  "label": "def:simple-polygon",
+  "kind": "definition",
+  "title": "Simple lattice polygon",
+  "uses": [
+    "def:lattice-point"
+  ],
+  "statement": "A \\emph{simple lattice polygon} is a closed polygonal curve in $\\mathbb{R}^2$\nwhose vertices are lattice points and whose edges intersect only at shared\nendpoints, together with the closed bounded region it encloses. We write $P$\nfor both the curve and the region; context disambiguates.",
+  "proof": null,
+  "leanDeclaration": "Pick.SimplePolygon"
+}

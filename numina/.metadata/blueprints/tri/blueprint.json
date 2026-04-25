@@ -5,6 +5,96 @@
   "notes": "",
   "entries": [
     {
+      "label": "def:lattice-point",
+      "kind": "definition",
+      "title": "Lattice point"
+    },
+    {
+      "label": "def:simple-polygon",
+      "kind": "definition",
+      "title": "Simple lattice polygon"
+    },
+    {
+      "label": "def:interior-points",
+      "kind": "definition",
+      "title": "Interior lattice points"
+    },
+    {
+      "label": "def:boundary-points",
+      "kind": "definition",
+      "title": "Boundary lattice points"
+    },
+    {
+      "label": "def:area",
+      "kind": "definition",
+      "title": "Polygon area"
+    },
+    {
+      "label": "def:lattice-triangle",
+      "kind": "definition",
+      "title": "Lattice triangle"
+    },
+    {
+      "label": "def:primitive-triangle",
+      "kind": "definition",
+      "title": "Primitive lattice triangle"
+    },
+    {
+      "label": "def:triangulation",
+      "kind": "definition",
+      "title": "Triangulation of a polygon"
+    },
+    {
+      "label": "def:plane-graph",
+      "kind": "definition",
+      "title": "Plane graph of a triangulation"
+    },
+    {
+      "label": "lem:primitive-triangle-area",
+      "kind": "lemma",
+      "title": "Primitive lattice triangle has area $\\tfrac12$"
+    },
+    {
+      "label": "lem:exists-primitive-triangulation",
+      "kind": "lemma",
+      "title": "Existence of a full primitive triangulation"
+    },
+    {
+      "label": "lem:area-additive",
+      "kind": "lemma",
+      "title": "Area additivity over a triangulation"
+    },
+    {
+      "label": "lem:vertex-count",
+      "kind": "lemma",
+      "title": "Vertex count"
+    },
+    {
+      "label": "lem:face-count",
+      "kind": "lemma",
+      "title": "Face count"
+    },
+    {
+      "label": "lem:boundary-edge-count",
+      "kind": "lemma",
+      "title": "Boundary contributes $b$ edges"
+    },
+    {
+      "label": "lem:edge-double-count",
+      "kind": "lemma",
+      "title": "Edge double count"
+    },
+    {
+      "label": "lem:euler-formula",
+      "kind": "lemma",
+      "title": "Euler's formula for the triangulation graph"
+    },
+    {
+      "label": "lem:triangle-count",
+      "kind": "lemma",
+      "title": "Triangle count"
+    },
+    {
       "label": "thm:pick",
       "kind": "theorem",
       "title": "Pick's Theorem"

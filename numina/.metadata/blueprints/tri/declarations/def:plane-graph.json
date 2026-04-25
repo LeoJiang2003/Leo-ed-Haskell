@@ -1,0 +1,11 @@
+{
+  "label": "def:plane-graph",
+  "kind": "definition",
+  "title": "Plane graph of a triangulation",
+  "uses": [
+    "def:triangulation"
+  ],
+  "statement": "Given a lattice triangulation $\\mathcal{T}$ of $P$, its \\emph{plane graph}\n$G(\\mathcal{T})$ has vertex set equal to the set of triangle vertices and\nedge set equal to the set of triangle sides. Its faces (in the plane) are the\n$T$ open triangle interiors together with the unbounded exterior of $P$.",
+  "proof": null,
+  "leanDeclaration": "Pick.Triangulation.planeGraph"
+}

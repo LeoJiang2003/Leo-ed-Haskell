@@ -1,77 +1,246 @@
-% Blue\documentclass[11pt]{article}
+\documentclass[11pt]{article}
 \usepackage{amsmath,amssymb,amsthm}
 
+\providecommand{\uses}[1]{}
+\providecommand{\lean}[1]{}
+\providecommand{\leanok}{}
+
 \newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
 
 \begin{document}
 
+%% =====================================================================
+%% Definitions
+%% =====================================================================
+
+\begin{definition}[Lattice point]
+\label{def:lattice-point}
+\lean{Pick.LatticePoint}
+A \emph{lattice point} in the plane is a point of $\mathbb{Z}^2 \subset
+\mathbb{R}^2$.
+\end{definition}
+
+\begin{definition}[Simple lattice polygon]
+\label{def:simple-polygon}
+\lean{Pick.SimplePolygon}
+\uses{def:lattice-point}
+A \emph{simple lattice polygon} is a closed polygonal curve in $\mathbb{R}^2$
+whose vertices are lattice points and whose edges intersect only at shared
+endpoints, together with the closed bounded region it encloses. We write $P$
+for both the curve and the region; context disambiguates.
+\end{definition}
+
+\begin{definition}[Interior lattice points]
+\label{def:interior-points}
+\lean{Pick.SimplePolygon.interiorLatticePoints}
+\uses{def:simple-polygon}
+For a simple lattice polygon $P$, write $i(P)$ for the number of lattice
+points lying in the topological interior of $P$.
+\end{definition}
+
+\begin{definition}[Boundary lattice points]
+\label{def:boundary-points}
+\lean{Pick.SimplePolygon.boundaryLatticePoints}
+\uses{def:simple-polygon}
+For a simple lattice polygon $P$, write $b(P)$ for the number of lattice
+points lying on the boundary curve of $P$ (vertices included).
+\end{definition}
+
+\begin{definition}[Polygon area]
+\label{def:area}
+\lean{Pick.SimplePolygon.area}
+\uses{def:simple-polygon}
+For a simple lattice polygon $P$, write $A(P)$ for the Euclidean area of the
+closed region enclosed by $P$ (e.g.\ via the shoelace formula on the vertex
+sequence).
+\end{definition}
+
+\begin{definition}[Lattice triangle]
+\label{def:lattice-triangle}
+\lean{Pick.LatticeTriangle}
+\uses{def:lattice-point}
+A \emph{lattice triangle} is the convex hull of three non-collinear lattice
+points $v_1, v_2, v_3 \in \mathbb{Z}^2$.
+\end{definition}
+
+\begin{definition}[Primitive lattice triangle]
+\label{def:primitive-triangle}
+\lean{Pick.LatticeTriangle.IsPrimitive}
+\uses{def:lattice-triangle}
+A lattice triangle $\Delta$ is \emph{primitive} if the only lattice points of
+$\mathbb{Z}^2$ contained in $\Delta$ (interior or boundary) are its three
+vertices.
+\end{definition}
+
+\begin{definition}[Triangulation of a polygon]
+\label{def:triangulation}
+\lean{Pick.Triangulation}
+\uses{def:simple-polygon, def:lattice-triangle}
+A \emph{lattice triangulation} of a simple lattice polygon $P$ is a finite
+collection $\mathcal{T} = \{\Delta_1, \dots, \Delta_T\}$ of lattice triangles
+such that:
+\begin{enumerate}
+\item their union equals the closed region $P$;
+\item their interiors are pairwise disjoint;
+\item the intersection of any two distinct triangles is either empty, a
+common vertex, or a common edge (the \emph{edge-to-edge} condition).
+\end{enumerate}
+The triangulation is called \emph{primitive} if every $\Delta_j$ is a
+primitive lattice triangle, and \emph{full} if every lattice point of $P$
+appears as a vertex of some $\Delta_j$.
+\end{definition}
+
+\begin{definition}[Plane graph of a triangulation]
+\label{def:plane-graph}
+\lean{Pick.Triangulation.planeGraph}
+\uses{def:triangulation}
+Given a lattice triangulation $\mathcal{T}$ of $P$, its \emph{plane graph}
+$G(\mathcal{T})$ has vertex set equal to the set of triangle vertices and
+edge set equal to the set of triangle sides. Its faces (in the plane) are the
+$T$ open triangle interiors together with the unbounded exterior of $P$.
+\end{definition}
+
+%% =====================================================================
+%% Sub-lemmas
+%% =====================================================================
+
+\begin{lemma}[Primitive lattice triangle has area $\tfrac12$]
+\label{lem:primitive-triangle-area}
+\lean{Pick.primitive_lattice_triangle_area}
+\uses{def:primitive-triangle, def:area}
+If $\Delta$ is a primitive lattice triangle, then its Euclidean area is
+$\tfrac12$.
+\end{lemma}
+
+\begin{lemma}[Existence of a full primitive triangulation]
+\label{lem:exists-primitive-triangulation}
+\lean{Pick.exists_primitive_lattice_triangulation}
+\uses{def:simple-polygon, def:triangulation, def:primitive-triangle}
+Every simple lattice polygon $P$ admits a triangulation $\mathcal{T}$ that is
+both \emph{full} (every lattice point of $P$ is a vertex of $\mathcal{T}$)
+and \emph{primitive} (every triangle in $\mathcal{T}$ is primitive).
+\end{lemma}
+
+\begin{lemma}[Area additivity over a triangulation]
+\label{lem:area-additive}
+\lean{Pick.area_eq_sum_triangle_areas}
+\uses{def:triangulation, def:area}
+If $\mathcal{T} = \{\Delta_1, \dots, \Delta_T\}$ is any lattice triangulation
+of $P$, then
+\[
+A(P) \;=\; \sum_{j=1}^{T} A(\Delta_j).
+\]
+In particular, if $\mathcal{T}$ is primitive, then $A(P) = T/2$.
+\end{lemma}
+
+\begin{lemma}[Vertex count]
+\label{lem:vertex-count}
+\lean{Pick.vertex_count}
+\uses{def:plane-graph, def:interior-points, def:boundary-points,
+lem:exists-primitive-triangulation}
+For a full lattice triangulation $\mathcal{T}$ of $P$ with plane graph
+$G(\mathcal{T})$,
+\[
+V \;=\; i(P) + b(P),
+\]
+where $V$ is the number of vertices of $G(\mathcal{T})$.
+\end{lemma}
+
+\begin{lemma}[Face count]
+\label{lem:face-count}
+\lean{Pick.face_count}
+\uses{def:plane-graph, def:triangulation}
+For a lattice triangulation $\mathcal{T}$ of $P$ with $T$ triangles,
+\[
+F \;=\; T + 1,
+\]
+where $F$ is the number of faces of the plane graph $G(\mathcal{T})$
+(counting the unbounded exterior face).
+\end{lemma}
+
+\begin{lemma}[Boundary contributes $b$ edges]
+\label{lem:boundary-edge-count}
+\lean{Pick.boundary_edge_count}
+\uses{def:plane-graph, def:boundary-points,
+lem:exists-primitive-triangulation}
+For a full lattice triangulation $\mathcal{T}$ of $P$, the boundary of $P$
+contributes exactly $b(P)$ edges to the plane graph $G(\mathcal{T})$, one
+between each pair of consecutive boundary lattice points.
+\end{lemma}
+
+\begin{lemma}[Edge double count]
+\label{lem:edge-double-count}
+\lean{Pick.edge_double_count}
+\uses{def:plane-graph, def:triangulation, lem:boundary-edge-count}
+For a lattice triangulation $\mathcal{T}$ of $P$ with $T$ triangles and plane
+graph $G(\mathcal{T})$ having $E$ edges,
+\[
+3T \;=\; 2E - b(P),
+\qquad\text{equivalently}\qquad
+E \;=\; \frac{3T + b(P)}{2}.
+\]
+The proof counts triangle sides in two ways: each interior edge lies on two
+triangles, each boundary edge on one.
+\end{lemma}
+
+\begin{lemma}[Euler's formula for the triangulation graph]
+\label{lem:euler-formula}
+\lean{Pick.euler_formula}
+\uses{def:plane-graph}
+For the plane graph $G(\mathcal{T})$ of a lattice triangulation of a simple
+polygon,
+\[
+V - E + F \;=\; 2.
+\]
+\end{lemma}
+
+\begin{lemma}[Triangle count]
+\label{lem:triangle-count}
+\lean{Pick.triangle_count}
+\uses{lem:vertex-count, lem:face-count, lem:edge-double-count,
+lem:euler-formula}
+For a full primitive lattice triangulation $\mathcal{T}$ of $P$ with $T$
+triangles,
+\[
+T \;=\; 2\,i(P) + b(P) - 2.
+\]
+This follows by substituting $V = i+b$, $F = T+1$, and
+$E = (3T+b)/2$ into Euler's formula.
+\end{lemma}
+
+%% =====================================================================
+%% Main theorem
+%% =====================================================================
+
 \begin{theorem}[Pick's Theorem]
 \label{thm:pick}
+\lean{Pick.pick}
+\uses{def:simple-polygon, def:area, def:interior-points, def:boundary-points,
+lem:primitive-triangle-area, lem:exists-primitive-triangulation,
+lem:area-additive, lem:triangle-count}
 Let $P$ be a simple polygon in the plane whose vertices all have integer
 coordinates. Let $i$ be the number of lattice points in the interior of $P$,
 and let $b$ be the number of lattice points on the boundary of $P$ (including
 the vertices). Then the area $A$ of $P$ satisfies
 \[
-A=i+\frac{b}{2}-1.
+A \;=\; i + \frac{b}{2} - 1.
 \]
 \end{theorem}
 
 \begin{proof}
-Add noncrossing diagonals until $P$ is triangulated, using every lattice
-point of $P$ as a vertex of the triangulation. Then each triangle in the
-triangulation is a primitive lattice triangle, meaning that it has no lattice
-points other than its three vertices on its boundary or in its interior. By
-the standard lattice-triangle lemma, every primitive lattice triangle has area
-$\tfrac12$.
-
-Let $T$ be the number of triangles in the triangulation. Since area is
-additive,
+Choose a full primitive lattice triangulation $\mathcal{T}$ of $P$ with $T$
+triangles, which exists by Lemma~\ref{lem:exists-primitive-triangulation}.
+By Lemma~\ref{lem:primitive-triangle-area} each triangle has area $\tfrac12$,
+and by Lemma~\ref{lem:area-additive} the polygon area is the sum of triangle
+areas, so $A = T/2$. By Lemma~\ref{lem:triangle-count},
+$T = 2i + b - 2$. Therefore
 \[
-A=\frac{T}{2}.
+A \;=\; \frac{T}{2} \;=\; \frac{2i + b - 2}{2} \;=\; i + \frac{b}{2} - 1.
+\qedhere
 \]
-
-Now view the triangulation as a planar graph. Let $V$, $E$, and $F$ be the
-numbers of vertices, edges, and faces. Because every lattice point of $P$ is a
-vertex, we have
-\[
-V=i+b.
-\]
-The faces are the $T$ bounded triangles together with the unbounded exterior
-face, so
-\[
-F=T+1.
-\]
-Euler's formula gives
-\[
-V-E+F=2.
-\]
-
-To count edges, let $E_{\mathrm{int}}$ be the number of interior edges. Then
-\[
-E=E_{\mathrm{int}}+b,
-\]
-because the polygon boundary contributes exactly $b$ edges, one between each
-pair of consecutive boundary lattice points. Counting sides of triangles gives
-\[
-3T=2E_{\mathrm{int}}+b=2E-b.
-\]
-Hence
-\[
-E=\frac{3T+b}{2}.
-\]
-Substituting this into Euler's formula yields
-\[
-(i+b)-\frac{3T+b}{2}+(T+1)=2,
-\]
-so
-\[
-T=2i+b-2.
-\]
-Therefore
-\[
-A=\frac{T}{2}=\frac{2i+b-2}{2}=i+\frac{b}{2}-1.
-\]
-This is Pick's theorem.
 \end{proof}
 
 \end{document}

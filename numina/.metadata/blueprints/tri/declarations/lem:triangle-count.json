@@ -1,0 +1,14 @@
+{
+  "label": "lem:triangle-count",
+  "kind": "lemma",
+  "title": "Triangle count",
+  "uses": [
+    "lem:vertex-count",
+    "lem:face-count",
+    "lem:edge-double-count",
+    "lem:euler-formula"
+  ],
+  "statement": "For a full primitive lattice triangulation $\\mathcal{T}$ of $P$ with $T$\ntriangles,\n\\[\nT \\;=\\; 2\\,i(P) + b(P) - 2.\n\\]\nThis follows by substituting $V = i+b$, $F = T+1$, and\n$E = (3T+b)/2$ into Euler's formula.",
+  "proof": null,
+  "leanDeclaration": "Pick.triangle_count"
+}

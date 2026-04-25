@@ -1,0 +1,11 @@
+{
+  "label": "def:lattice-triangle",
+  "kind": "definition",
+  "title": "Lattice triangle",
+  "uses": [
+    "def:lattice-point"
+  ],
+  "statement": "A \\emph{lattice triangle} is the convex hull of three non-collinear lattice\npoints $v_1, v_2, v_3 \\in \\mathbb{Z}^2$.",
+  "proof": null,
+  "leanDeclaration": "Pick.LatticeTriangle"
+}
