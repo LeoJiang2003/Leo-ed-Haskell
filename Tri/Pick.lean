@@ -211,13 +211,22 @@ theorem euler_formula (P : SimplePolygon) (𝒯 : Triangulation P) :
   omega
 
 /-- **Triangle count.** For a full primitive lattice triangulation,
-`T + 2 = 2 * i(P) + b(P)`. -/
+`T + 2 = 2 * i(P) + b(P)`. Derived from edge double counting and
+Euler's formula. -/
 theorem triangle_count
     (P : SimplePolygon) (𝒯 : Triangulation P)
-    (hPrim : 𝒯.IsPrimitive) (hFull : 𝒯.IsFull) :
+    (_hPrim : 𝒯.IsPrimitive) (hFull : 𝒯.IsFull) :
     𝒯.triangles.card + 2 =
       2 * P.interiorLatticePoints + P.boundaryLatticePoints := by
-  sorry
+  have hE := edge_double_count P 𝒯 hFull
+  have hT : 1 ≤ 𝒯.triangles.card := 𝒯.triangles_nonempty
+  -- Unfold the count definitions to expose the linear arithmetic.
+  show 𝒯.triangles.card + 2 =
+      2 * P.interiorLatticePoints + P.boundaryLatticePoints
+  have hE' : 2 * (P.interiorLatticePoints + P.boundaryLatticePoints +
+      (𝒯.triangles.card + 1) - 2) =
+        3 * 𝒯.triangles.card + P.boundaryLatticePoints := hE
+  omega
 
 /-- **Pick's Theorem.** For a simple lattice polygon `P` with `i` interior
 lattice points and `b` boundary lattice points,
