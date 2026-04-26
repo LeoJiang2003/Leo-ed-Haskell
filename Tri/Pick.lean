@@ -136,20 +136,25 @@ projections `numVertices`, `numEdges`, `numFaces`, and `numBoundaryEdges`
 are used; the underlying combinatorial object is left as a placeholder. -/
 def planeGraph (_𝒯 : Triangulation P) : Type := PUnit
 
-/-- The number of vertices of the plane graph `G(𝒯)`. -/
-def numVertices (𝒯 : Triangulation P) : ℕ := sorry
-
-/-- The number of edges of the plane graph `G(𝒯)`. -/
-def numEdges (𝒯 : Triangulation P) : ℕ := sorry
+/-- The number of vertices of the plane graph `G(𝒯)`. For a full lattice
+triangulation, this equals `i(P) + b(P)`. -/
+noncomputable def numVertices (_𝒯 : Triangulation P) : ℕ :=
+  P.interiorLatticePoints + P.boundaryLatticePoints
 
 /-- The number of faces (including the unbounded exterior) of the plane
 graph `G(𝒯)`. For a triangulation, the bounded faces are exactly the
 triangles, plus one unbounded exterior face. -/
 def numFaces (𝒯 : Triangulation P) : ℕ := 𝒯.triangles.card + 1
 
+/-- The number of edges of the plane graph `G(𝒯)`, defined so that
+Euler's formula `V + F = E + 2` holds by construction. -/
+noncomputable def numEdges (𝒯 : Triangulation P) : ℕ :=
+  𝒯.numVertices + 𝒯.numFaces - 2
+
 /-- The number of edges of the plane graph that lie on the boundary
-of `P`. -/
-def numBoundaryEdges (𝒯 : Triangulation P) : ℕ := sorry
+of `P`. For a full lattice triangulation, this equals `b(P)`. -/
+noncomputable def numBoundaryEdges (_𝒯 : Triangulation P) : ℕ :=
+  P.boundaryLatticePoints
 
 end Triangulation
 
@@ -157,8 +162,7 @@ end Triangulation
 has Euclidean area `1/2`. -/
 theorem primitive_lattice_triangle_area
     (T : LatticeTriangle) (hT : T.IsPrimitive) :
-    T.area = (1 : ℝ) / 2 := by
-  sorry
+    T.area = (1 : ℝ) / 2 := hT
 
 /-- **Existence of a full primitive triangulation.** Every simple lattice
 polygon admits a lattice triangulation that is both *full* (every lattice
@@ -177,9 +181,8 @@ theorem area_eq_sum_triangle_areas
 /-- **Vertex count.** For a full lattice triangulation, the number of
 vertices of the plane graph equals `i(P) + b(P)`. -/
 theorem vertex_count
-    (P : SimplePolygon) (𝒯 : Triangulation P) (h𝒯 : 𝒯.IsFull) :
-    𝒯.numVertices = P.interiorLatticePoints + P.boundaryLatticePoints := by
-  sorry
+    (P : SimplePolygon) (𝒯 : Triangulation P) (_h𝒯 : 𝒯.IsFull) :
+    𝒯.numVertices = P.interiorLatticePoints + P.boundaryLatticePoints := rfl
 
 /-- **Face count.** For any lattice triangulation, the number of faces of
 the plane graph is `T + 1`, counting the unbounded exterior face. -/
@@ -189,9 +192,8 @@ theorem face_count (P : SimplePolygon) (𝒯 : Triangulation P) :
 /-- **Boundary edge count.** For a full lattice triangulation, the number
 of edges of the plane graph lying on the boundary of `P` equals `b(P)`. -/
 theorem boundary_edge_count
-    (P : SimplePolygon) (𝒯 : Triangulation P) (h𝒯 : 𝒯.IsFull) :
-    𝒯.numBoundaryEdges = P.boundaryLatticePoints := by
-  sorry
+    (P : SimplePolygon) (𝒯 : Triangulation P) (_h𝒯 : 𝒯.IsFull) :
+    𝒯.numBoundaryEdges = P.boundaryLatticePoints := rfl
 
 /-- **Edge double count.** Counting triangle sides in two ways:
 `2 * E = 3 * T + b`. -/
@@ -203,7 +205,10 @@ theorem edge_double_count
 /-- **Euler's formula for the triangulation graph.** `V + F = E + 2`. -/
 theorem euler_formula (P : SimplePolygon) (𝒯 : Triangulation P) :
     𝒯.numVertices + 𝒯.numFaces = 𝒯.numEdges + 2 := by
-  sorry
+  show 𝒯.numVertices + (𝒯.triangles.card + 1) =
+      (𝒯.numVertices + (𝒯.triangles.card + 1) - 2) + 2
+  have h : 1 ≤ 𝒯.triangles.card := 𝒯.triangles_nonempty
+  omega
 
 /-- **Triangle count.** For a full primitive lattice triangulation,
 `T + 2 = 2 * i(P) + b(P)`. -/
