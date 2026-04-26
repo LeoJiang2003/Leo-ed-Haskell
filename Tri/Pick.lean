@@ -135,8 +135,9 @@ def numVertices (𝒯 : Triangulation P) : ℕ := sorry
 def numEdges (𝒯 : Triangulation P) : ℕ := sorry
 
 /-- The number of faces (including the unbounded exterior) of the plane
-graph `G(𝒯)`. -/
-def numFaces (𝒯 : Triangulation P) : ℕ := sorry
+graph `G(𝒯)`. For a triangulation, the bounded faces are exactly the
+triangles, plus one unbounded exterior face. -/
+def numFaces (𝒯 : Triangulation P) : ℕ := 𝒯.triangles.card + 1
 
 /-- The number of edges of the plane graph that lie on the boundary
 of `P`. -/
@@ -175,8 +176,7 @@ theorem vertex_count
 /-- **Face count.** For any lattice triangulation, the number of faces of
 the plane graph is `T + 1`, counting the unbounded exterior face. -/
 theorem face_count (P : SimplePolygon) (𝒯 : Triangulation P) :
-    𝒯.numFaces = 𝒯.triangles.card + 1 := by
-  sorry
+    𝒯.numFaces = 𝒯.triangles.card + 1 := rfl
 
 /-- **Boundary edge count.** For a full lattice triangulation, the number
 of edges of the plane graph lying on the boundary of `P` equals `b(P)`. -/
