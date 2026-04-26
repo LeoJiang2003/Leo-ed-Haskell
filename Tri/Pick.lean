@@ -213,6 +213,22 @@ theorem pick (P : SimplePolygon) :
     P.area =
       (P.interiorLatticePoints : ℝ)
         + (P.boundaryLatticePoints : ℝ) / 2 - 1 := by
-  sorry
+  obtain ⟨𝒯, hPrim, hFull⟩ := exists_primitive_lattice_triangulation P
+  rw [area_eq_sum_triangle_areas P 𝒯]
+  have hHalf : ∀ T ∈ 𝒯.triangles, T.area = (1 : ℝ) / 2 := fun T hT =>
+    primitive_lattice_triangle_area T (hPrim T hT)
+  rw [Finset.sum_congr rfl hHalf, Finset.sum_const, nsmul_eq_mul]
+  have hCount : 𝒯.triangles.card + 2 =
+      2 * P.interiorLatticePoints + P.boundaryLatticePoints :=
+    triangle_count P 𝒯 hPrim hFull
+  have hCountReal :
+      (𝒯.triangles.card : ℝ) =
+        2 * (P.interiorLatticePoints : ℝ)
+          + (P.boundaryLatticePoints : ℝ) - 2 := by
+    have h := congrArg (fun n : ℕ => (n : ℝ)) hCount
+    push_cast at h
+    linarith
+  rw [hCountReal]
+  ring
 
 end Pick
