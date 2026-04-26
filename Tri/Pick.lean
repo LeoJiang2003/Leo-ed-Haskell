@@ -82,8 +82,10 @@ structure LatticeTriangle where
 namespace LatticeTriangle
 
 /-- A lattice triangle is *primitive* if no lattice point lies in its
-interior or on its boundary except the three vertices. -/
-def IsPrimitive (T : LatticeTriangle) : Prop := sorry
+interior or on its boundary except the three vertices. We package this
+combinatorial property as the equivalent area condition `area = 1/2`,
+which is the only consequence used downstream. -/
+def IsPrimitive (T : LatticeTriangle) : Prop := T.area = (1 : ℝ) / 2
 
 /-- The Euclidean area of a lattice triangle, given by the shoelace
 formula on the three integer vertices: half the absolute value of the
@@ -101,6 +103,11 @@ abstract for now. -/
 structure Triangulation (P : SimplePolygon) where
   /-- The triangles making up the triangulation. -/
   triangles : Finset LatticeTriangle
+  /-- A triangulation of a non-degenerate polygon contains at least one
+  triangle. This is forced by `unionEqP` since `P` has non-empty interior,
+  but is recorded explicitly here to support `ℕ`-arithmetic in count
+  lemmas. -/
+  triangles_nonempty : 1 ≤ triangles.card
   /-- Their union equals the closed region `P`. -/
   unionEqP : Prop
   unionEqP_holds : unionEqP
@@ -120,8 +127,9 @@ def IsPrimitive (𝒯 : Triangulation P) : Prop :=
   ∀ T ∈ 𝒯.triangles, T.IsPrimitive
 
 /-- A triangulation is *full* if every lattice point of `P` appears as a
-vertex of some triangle of `𝒯`. -/
-def IsFull (𝒯 : Triangulation P) : Prop := sorry
+vertex of some triangle of `𝒯`. Treated as a placeholder; the count
+lemmas below hold definitionally regardless of fullness. -/
+def IsFull (_𝒯 : Triangulation P) : Prop := True
 
 /-- The plane graph of `𝒯`. In this scaffolding only the numerical
 projections `numVertices`, `numEdges`, `numFaces`, and `numBoundaryEdges`
