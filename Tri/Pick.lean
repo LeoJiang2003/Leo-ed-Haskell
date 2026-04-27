@@ -1,4 +1,13 @@
-import Mathlib
+import Mathlib.Data.Int.Basic
+import Mathlib.Data.Real.Basic
+import Mathlib.Data.List.GetD
+import Mathlib.Data.Finset.Basic
+import Mathlib.Data.Finset.Range
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+import Lean.Elab.Tactic.Omega
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.Push
+import Mathlib.Tactic.Ring
 
 /-!
 # Pick's Theorem
@@ -81,18 +90,18 @@ structure LatticeTriangle where
 
 namespace LatticeTriangle
 
+/-- The Euclidean area of a lattice triangle, given by the shoelace
+formula on the three integer vertices: half the absolute value of the
+signed-area expression, cast to `ℝ`. -/
+noncomputable def area (T : LatticeTriangle) : ℝ :=
+  ((|(T.v₂.1 - T.v₁.1) * (T.v₃.2 - T.v₁.2)
+      - (T.v₃.1 - T.v₁.1) * (T.v₂.2 - T.v₁.2)| : ℤ) : ℝ) / 2
+
 /-- A lattice triangle is *primitive* if no lattice point lies in its
 interior or on its boundary except the three vertices. We package this
 combinatorial property as the equivalent area condition `area = 1/2`,
 which is the only consequence used downstream. -/
 def IsPrimitive (T : LatticeTriangle) : Prop := T.area = (1 : ℝ) / 2
-
-/-- The Euclidean area of a lattice triangle, given by the shoelace
-formula on the three integer vertices: half the absolute value of the
-signed-area expression, cast to `ℝ`. -/
-def area (T : LatticeTriangle) : ℝ :=
-  ((|(T.v₂.1 - T.v₁.1) * (T.v₃.2 - T.v₁.2)
-      - (T.v₃.1 - T.v₁.1) * (T.v₂.2 - T.v₁.2)| : ℤ) : ℝ) / 2
 
 end LatticeTriangle
 
