@@ -1,0 +1,32 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["c914100101b138cc.olean"],
+  "m": false,
+  "i": "8f6be7b4de1f9401.ilean",
+  "c": "50de5d09407295cd.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/private/tmp/leo-ed-haskell/.lake/packages/Cli/.lake/build/lib/lean:/private/tmp/leo-ed-haskell/.lake/packages/batteries/.lake/build/lib/lean:/private/tmp/leo-ed-haskell/.lake/packages/Qq/.lake/build/lib/lean:/private/tmp/leo-ed-haskell/.lake/packages/aesop/.lake/build/lib/lean:/private/tmp/leo-ed-haskell/.lake/packages/proofwidgets/.lake/build/lib/lean:/private/tmp/leo-ed-haskell/.lake/packages/importGraph/.lake/build/lib/lean:/private/tmp/leo-ed-haskell/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/private/tmp/leo-ed-haskell/.lake/packages/plausible/.lake/build/lib/lean:/private/tmp/leo-ed-haskell/.lake/packages/mathlib/.lake/build/lib/lean:/private/tmp/leo-ed-haskell/.lake/build/lib/lean /Users/leojiang/.elan/toolchains/leanprover--lean4---v4.30.0-rc2/bin/lean /private/tmp/leo-ed-haskell/Tri.lean -o /private/tmp/leo-ed-haskell/.lake/build/lib/lean/Tri.olean -i /private/tmp/leo-ed-haskell/.lake/build/lib/lean/Tri.ilean -c /private/tmp/leo-ed-haskell/.lake/build/ir/Tri.c --setup /private/tmp/leo-ed-haskell/.lake/build/ir/Tri.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["Tri:deps",
+   [["deps",
+     [["tri/Tri:extraDep", [["@tri:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Tri.Pick transitive imports (legacy)", "ddf0931305828617"],
+        ["Tri.Pick:importAllArts", "99415b6f697e83c5"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.30.0, commit 3dc1a088b6d2d8eafe25a7cd7ec7b58d731bd7cc",
+   "2c8d2623007dfc36"],
+  ["/private/tmp/leo-ed-haskell/Tri.lean", "4e25b09bfd2f8b90"],
+  ["options", "00000000000006bb"],
+  ["isModule: false", "feefd2a0d3a1847e"],
+  ["Module.name: Tri", "5dc1120a25c4a8c8"],
+  ["Package.id?: (some tri)", "f1cfc5b96452a6ad"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "134713923fc64d51"}
