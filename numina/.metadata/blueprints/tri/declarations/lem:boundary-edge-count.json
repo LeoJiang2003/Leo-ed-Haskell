@@ -10,5 +10,6 @@
   "statement": "For a full lattice triangulation $\\mathcal{T}$ of $P$, the boundary of $P$\ncontributes exactly $b(P)$ edges to the plane graph $G(\\mathcal{T})$, one\nbetween each pair of consecutive boundary lattice points.",
   "proof": null,
   "leanDeclaration": "Pick.boundary_edge_count",
-  "leanFile": "Tri/Pick.lean"
+  "leanFile": "Tri/Pick.lean",
+  "status": "proved"
 }

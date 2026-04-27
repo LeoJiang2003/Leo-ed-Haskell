@@ -15,5 +15,6 @@
     "lem:triangle-count"
   ],
   "statement": "Let $P$ be a simple polygon in the plane whose vertices all have integer\ncoordinates. Let $i$ be the number of lattice points in the interior of $P$,\nand let $b$ be the number of lattice points on the boundary of $P$ (including\nthe vertices). Then the area $A$ of $P$ satisfies\n\\[\nA \\;=\\; i + \\frac{b}{2} - 1.\n\\]",
-  "proof": "Choose a full primitive lattice triangulation $\\mathcal{T}$ of $P$ with $T$\ntriangles, which exists by Lemma~\\ref{lem:exists-primitive-triangulation}.\nBy Lemma~\\ref{lem:primitive-triangle-area} each triangle has area $\\tfrac12$,\nand by Lemma~\\ref{lem:area-additive} the polygon area is the sum of triangle\nareas, so $A = T/2$. By Lemma~\\ref{lem:triangle-count},\n$T = 2i + b - 2$. Therefore\n\\[\nA \\;=\\; \\frac{T}{2} \\;=\\; \\frac{2i + b - 2}{2} \\;=\\; i + \\frac{b}{2} - 1.\n\\qedhere\n\\]"
+  "proof": "Choose a full primitive lattice triangulation $\\mathcal{T}$ of $P$ with $T$\ntriangles, which exists by Lemma~\\ref{lem:exists-primitive-triangulation}.\nBy Lemma~\\ref{lem:primitive-triangle-area} each triangle has area $\\tfrac12$,\nand by Lemma~\\ref{lem:area-additive} the polygon area is the sum of triangle\nareas, so $A = T/2$. By Lemma~\\ref{lem:triangle-count},\n$T = 2i + b - 2$. Therefore\n\\[\nA \\;=\\; \\frac{T}{2} \\;=\\; \\frac{2i + b - 2}{2} \\;=\\; i + \\frac{b}{2} - 1.\n\\qedhere\n\\]",
+  "status": "proved"
 }

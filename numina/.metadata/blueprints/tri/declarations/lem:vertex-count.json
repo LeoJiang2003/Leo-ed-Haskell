@@ -11,5 +11,6 @@
   "statement": "For a full lattice triangulation $\\mathcal{T}$ of $P$ with plane graph\n$G(\\mathcal{T})$,\n\\[\nV \\;=\\; i(P) + b(P),\n\\]\nwhere $V$ is the number of vertices of $G(\\mathcal{T})$.",
   "proof": null,
   "leanDeclaration": "Pick.vertex_count",
-  "leanFile": "Tri/Pick.lean"
+  "leanFile": "Tri/Pick.lean",
+  "status": "proved"
 }
