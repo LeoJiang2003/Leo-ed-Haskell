@@ -14,8 +14,8 @@
    [["deps",
      [["tri/Tri:extraDep", [["@tri:extraDep", "00000000000006bb"]]],
       ["imports",
-       [["Tri.Pick transitive imports (legacy)", "44f023f100d56b40"],
-        ["Tri.Pick:importAllArts", "02d8a1f0fdb38d3a"]]]]],
+       [["Tri.Pick transitive imports (legacy)", "69e907659e83d972"],
+        ["Tri.Pick:importAllArts", "2d38300d8f405368"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
       ["package external libraries", "00000000000006bb"],
@@ -29,4 +29,4 @@
   ["Module.name: Tri", "5dc1120a25c4a8c8"],
   ["Package.id?: (some tri)", "f1cfc5b96452a6ad"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "cfe3d5fd16f21fb8"}
+ "depHash": "90b02b4a5c192ce0"}

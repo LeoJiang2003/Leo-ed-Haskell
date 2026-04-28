@@ -1,4 +1,12 @@
-import Mathlib
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+import Mathlib.Data.Finset.Range
+import Mathlib.Data.Int.Basic
+import Mathlib.Data.List.GetD
+import Mathlib.Data.Real.Basic
+import Lean.Elab.Tactic.Omega
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.Push
+import Mathlib.Tactic.Ring
 
 /-!
 # Pick's Theorem
