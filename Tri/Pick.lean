@@ -64,7 +64,7 @@ namespace LatticeTriangle
 /-- The Euclidean area of a lattice triangle, given by the shoelace
 formula on the three integer vertices: half the absolute value of the
 signed-area expression, cast to `ℝ`. -/
-def area (T : LatticeTriangle) : ℝ :=
+noncomputable def area (T : LatticeTriangle) : ℝ :=
   ((|(T.v₂.1 - T.v₁.1) * (T.v₃.2 - T.v₁.2)
       - (T.v₃.1 - T.v₁.1) * (T.v₂.2 - T.v₁.2)| : ℤ) : ℝ) / 2
 
