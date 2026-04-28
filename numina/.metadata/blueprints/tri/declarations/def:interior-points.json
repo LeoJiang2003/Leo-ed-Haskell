@@ -8,5 +8,6 @@
   "statement": "For a simple lattice polygon $P$, write $i(P)$ for the number of lattice\npoints lying in the topological interior of $P$.",
   "proof": null,
   "leanDeclaration": "Pick.SimplePolygon.interiorLatticePoints",
-  "leanFile": "Tri/Pick.lean"
+  "leanFile": "Tri/Pick.lean",
+  "status": "proved"
 }

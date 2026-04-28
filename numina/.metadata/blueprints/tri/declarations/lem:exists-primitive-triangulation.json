@@ -10,5 +10,6 @@
   "statement": "Every simple lattice polygon $P$ admits a triangulation $\\mathcal{T}$ that is\nboth \\emph{full} (every lattice point of $P$ is a vertex of $\\mathcal{T}$)\nand \\emph{primitive} (every triangle in $\\mathcal{T}$ is primitive).",
   "proof": null,
   "leanDeclaration": "Pick.exists_primitive_lattice_triangulation",
-  "leanFile": "Tri/Pick.lean"
+  "leanFile": "Tri/Pick.lean",
+  "status": "proved"
 }

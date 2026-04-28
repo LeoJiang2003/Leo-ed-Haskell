@@ -8,5 +8,6 @@
   "statement": "A lattice triangle $\\Delta$ is \\emph{primitive} if the only lattice points of\n$\\mathbb{Z}^2$ contained in $\\Delta$ (interior or boundary) are its three\nvertices.",
   "proof": null,
   "leanDeclaration": "Pick.LatticeTriangle.IsPrimitive",
-  "leanFile": "Tri/Pick.lean"
+  "leanFile": "Tri/Pick.lean",
+  "status": "proved"
 }

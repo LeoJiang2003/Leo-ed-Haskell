@@ -8,5 +8,6 @@
   "statement": "For a simple lattice polygon $P$, write $b(P)$ for the number of lattice\npoints lying on the boundary curve of $P$ (vertices included).",
   "proof": null,
   "leanDeclaration": "Pick.SimplePolygon.boundaryLatticePoints",
-  "leanFile": "Tri/Pick.lean"
+  "leanFile": "Tri/Pick.lean",
+  "status": "proved"
 }

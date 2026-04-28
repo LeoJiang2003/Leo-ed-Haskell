@@ -8,5 +8,6 @@
   "statement": "For a simple lattice polygon $P$, write $A(P)$ for the Euclidean area of the\nclosed region enclosed by $P$ (e.g.\\ via the shoelace formula on the vertex\nsequence).",
   "proof": null,
   "leanDeclaration": "Pick.SimplePolygon.area",
-  "leanFile": "Tri/Pick.lean"
+  "leanFile": "Tri/Pick.lean",
+  "status": "proved"
 }
